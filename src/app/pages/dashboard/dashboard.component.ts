@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from 'src/app/service/app.service';
 import { ChartComponent } from "ng-apexcharts";
+import { FormGroup, FormControl } from '@angular/forms';
 
 import {
   ApexNonAxisChartSeries,
@@ -40,6 +41,14 @@ export type ChartColumn = {
   grid: ApexGrid;
 };
 
+export type ChartBar = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  xaxis: ApexXAxis;
+};
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -49,148 +58,39 @@ export class DashboardComponent {
 
   public chartPie!: Partial<ChartPie> | any;
   public chartColumn!: Partial<ChartColumn> | any;
+  public chartBar!: Partial<ChartBar> | any;
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) {
+    
+  }
 
-  getInex: any = [];
-  jumInex: any = [];
-  jenis: any = [];
-  newjenis: any = [];
+ 
 
-  getTh: any = [];
-  jumTh: any = [];
-  tahun: any = [];
+  dtRemainding: any = [];
+  remaningDay: any;
 
   ngOnInit() {
-    this.appService.getInex().subscribe((data: any) => {
-      this.getInex = data.data;
-      this.getInex.forEach((item: any) => {
-        this.jumInex.push(item.in_or_ex);
-        this.jenis.push(item.jenis);
-      })
 
-      this.newjenis = this.jenis.map((item: any) => {
-        switch(item){
-          case 1:
-            return 'Internal';
-          case 2:
-            return 'External';
-          default:
-            return 'Kosong';    
-        }
-      })
-      this.ChartPie();
-      
-    });
-
-    this.appService.getTh().subscribe((data: any) => {
-      this.getTh = data.data[0];
-      this.getTh.forEach((item: any) => {
-        this.jumTh.push(item.total_data);
-        this.tahun.push(item.tahun);
-      })
-      console.log(this.tahun);
-      
-      this.ChartColumn();
+    this.appService.remainding().subscribe((data: any) => {
+      this.dtRemainding = data.data[0];
+      this.calculateRemainingDays();
     })
+
     
-    
-   
+  }
+ 
+  calculateRemainingDays() {
+    const expirationDate = new Date(this.dtRemainding.exp_calibration);
+    const today = new Date();
+    const diffTime = Math.abs(this.dtRemainding.exp_calibration.getTime() - today.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.remaningDay = diffDays;
+    console.log(this.remaningDay);
     
   }
 
-  ChartPie() {
-    this.chartPie = {
-      series: this.jumInex,
-      chart: {
-        width: 380,
-        type: "donut"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      fill: {
-        type: "gradient"
-      },
-      legend: {
-        position: "right",
-      },
-      labels: this.newjenis,
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
-    };
-  }
+  
 
-  ChartColumn() {
-    this.chartColumn = {
-      series: [
-        {
-          name: "distibuted",
-          data: this.jumTh
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "bar",
-        events: {
-         
-        }
-      },
-      colors: [
-        "#008FFB",
-        "#00E396",
-        "#FEB019",
-        "#FF4560",
-        "#775DD0",
-        "#546E7A",
-        "#26a69a",
-        "#D10CE8"
-      ],
-      plotOptions: {
-        bar: {
-          columnWidth: "45%",
-          distributed: true
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      legend: {
-        show: false
-      },
-      grid: {
-        show: false
-      },
-      xaxis: {
-        categories: this.tahun,
-        labels: {
-          style: {
-            colors: [
-              "#008FFB",
-              "#00E396",
-              "#FEB019",
-              "#FF4560",
-              "#775DD0",
-              "#546E7A",
-              "#26a69a",
-              "#D10CE8"
-            ],
-            fontSize: "12px"
-          }
-        }
-      }
-    };
-  }
+  
 
 }

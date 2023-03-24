@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor() {}
+
+
+  currentDateTime: any;
+
+  ngOnInit() {
+    setInterval(() => {
+      this.currentDateTime = new Date();
+    }, 1000);
+    
+    
+  }
+  
+
 }

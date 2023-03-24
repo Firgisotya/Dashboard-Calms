@@ -16,8 +16,13 @@ export class AppService {
   getTh() {
     return this.http.get(this.baseUrl + '/tahun');
   }
-  getMonth() {
-    return this.http.get(this.baseUrl + '/bulan');
+  getMonth(year: any) {
+    console.log("from service");
+    console.log(year);
+    return this.http.post(this.baseUrl + '/bulan' , year);
+  }
+  remainding() {
+    return this.http.get(this.baseUrl + '/remainding');
   }
 
 
