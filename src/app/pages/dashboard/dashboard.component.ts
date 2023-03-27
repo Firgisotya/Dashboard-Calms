@@ -64,19 +64,64 @@ export class DashboardComponent {
     
   }
 
+  countTemp: any = [];
+  countPress: any = [];
+  countMass: any = [];
+  countPh: any = [];
+  countConduct: any = [];
  
 
   dtRemainding: any = [];
   remaningDay: any;
+  dtRemainExp: any = [];
+  remaningDayExp: any;
 
   ngOnInit() {
+
+    this.appService.count_temp().subscribe((data: any) => {
+      this.countTemp = data.data[0].length
+      
+    })
+
+    this.appService.count_press().subscribe((data: any) => {
+      this.countPress = data.data[0].length
+    })
+
+    this.appService.count_mass().subscribe((data: any) => {
+      this.countMass = data.data[0].length
+    })
+
+    this.appService.count_ph().subscribe((data: any) => {
+      this.countPh = data.data[0].length
+    })
+
+    this.appService.count_conduct().subscribe((data: any) => {
+      this.countConduct = data.data[0].length
+    })
+
+
+
 
     this.appService.remainding().subscribe((data: any) => {
       this.dtRemainding = data.data[0];
       this.calculateRemainingDays();
     })
 
+    this.appService.remaindingExp().subscribe((data: any) => {
+      this.dtRemainExp = data.data[0];
+      this.calculateRemainingDaysExp();
+    })
+
     
+  }
+
+  calculateRemainingDaysExp() {
+    const expirationDate = new Date(this.dtRemainExp.exp_calibration);
+    const today = new Date();
+    const diffTime = Math.abs(this.dtRemainExp.exp_calibration.getTime() - today.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.remaningDayExp = diffDays;
+    console.log(this.remaningDayExp);
   }
  
   calculateRemainingDays() {

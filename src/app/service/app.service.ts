@@ -24,6 +24,23 @@ export class AppService {
   remainding() {
     return this.http.get(this.baseUrl + '/remainding');
   }
-
+  remaindingExp() {
+    return this.http.get(this.baseUrl + '/remaindingExp');
+  }
+  count_temp() {
+    return this.http.get(this.baseUrl + '/count_temp');
+  }
+  count_press() {
+    return this.http.get(this.baseUrl + '/count_press');
+  }
+  count_mass() {
+    return this.http.get(this.baseUrl + '/count_mass');
+  }
+  count_ph() {
+    return this.http.get(this.baseUrl + '/count_ph');
+  }
+  count_conduct() {
+    return this.http.get(this.baseUrl + '/count_conduct');
+  }
 
 }

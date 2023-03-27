@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppService } from 'src/app/service/app.service';
+
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  constructor() {}
+  constructor(private appService: AppService) {}
 
+  dtRemainding: any = [];
+  remaningDay: any;
 
   currentDateTime: any;
 
@@ -17,6 +21,21 @@ export class HeaderComponent {
       this.currentDateTime = new Date();
     }, 1000);
     
+
+    this.appService.remaindingExp().subscribe((data: any) => {
+      this.dtRemainding = data.data[0];
+      this.calculateRemainingDays();
+    })
+    
+  }
+
+  calculateRemainingDays() {
+    const expirationDate = new Date(this.dtRemainding.exp_calibration);
+    const today = new Date();
+    const diffTime = Math.abs(this.dtRemainding.exp_calibration.getTime() - today.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.remaningDay = diffDays;
+    console.log(this.remaningDay);
     
   }
   

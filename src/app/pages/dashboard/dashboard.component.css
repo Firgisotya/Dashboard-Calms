@@ -1,6 +1,14 @@
+
 .alerts-border {
-    
+    border: 3px solid;
     animation: blink 2s step-start 0s infinite;
 }
 
-@keyframes blink { 50% { background-color: #ff0000 ; color: azure; }  }
+@keyframes blink { 50% { border-color: rgb(244, 244, 11) ; color: azure; }  }
+
+.alerts-exp {
+    border: 3px solid;
+    animation: blink-animation 2s step-start 0s infinite;
+}
+
+@keyframes blink-animation { 50% { border-color: rgb(244, 11, 11) ; color: azure; }  }

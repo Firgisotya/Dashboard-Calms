@@ -1,9 +1,57 @@
-<header class="z-40 items-center w-full h-16 bg-white shadow-lg dark:bg-gray-700 rounded-2xl gabut">
-    <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
+<!-- <header class="z-40 items-center w-full h-16 bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
+    <div class="">
         <div class="relative flex items-center w-full pl-1 lg:max-w-68 sm:pr-2 sm:ml-0 justify-center">
-                <p class="font-medium">{{ currentDateTime | date:'EEEE, MMMM d, y, HH:mm:ss' }}</p>
+                
             </div>
         </div>
-    </header>
+    </header> -->
+
+    <div class="navbar bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
+        <div class="flex-1">
+            <p class="font-medium">{{ currentDateTime | date:'EEEE, MMMM d, y, HH:mm:ss' }}</p>
+        </div>
+        <div class="flex-none gap-2">
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                  <span class="badge badge-sm indicator-item">8</span>
+                </div>
+              </label>
+            <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-96">
+                <div *ngIf="dtRemainding">
+                    <div *ngFor="let item of dtRemainding">
+                        <!-- <li>
+                            <a class="justify-between flex">
+                             <p><b>{{ item.equipment_name  }}</b> Sudah Lebih</p>
+                             <p><b>{{ item.lebih_hari  }} Hari</b></p>
+                             <span class="badge badge-error">Expired</span>
+                           </a>
+                         </li> -->
+                         <div class="bg-red-600">
+                            <h2 class="card-title justify-center">Peringatan!</h2>
+                            <p class="text-center">
+                              Harap Segera Recalibrasi Mesin <b>{{ item.equipment_name }}</b>
+                            </p>
+                            <p class="text-center">
+                              Tersisa <b>{{ item.lebih_hari }} Hari</b> Dari Sekarang
+                            </p>
+                            <div class="justify-center text-center py-3">
+                              <a
+                                href=""
+                                target="_blank"
+                                class="bg-sky-500 text-white font-bold py-1 px-4 rounded"
+                                >Recalibrasi</a
+                              >
+                            </div>
+                          </div>
+                    </div>
+                </div>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
 
 
+     
