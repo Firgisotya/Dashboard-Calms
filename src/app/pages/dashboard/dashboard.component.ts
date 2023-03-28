@@ -80,7 +80,6 @@ export class DashboardComponent {
 
     this.appService.count_temp().subscribe((data: any) => {
       this.countTemp = data.data[0].length
-      
     })
 
     this.appService.count_press().subscribe((data: any) => {

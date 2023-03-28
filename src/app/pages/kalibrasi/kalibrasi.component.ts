@@ -93,19 +93,22 @@ export class KalibrasiComponent {
           case 2:
             return 'External';
           default:
-            return 'Kosong';    
+            return '';    
         }
       })
       this.ChartPie();
       
     });
-
+    this.ChartBar();
     this.appService.getTh().subscribe((data: any) => {
       this.getTh = data.data[0];
       this.getTh.forEach((item: any) => {
         this.jumTh.push(item.total_data);
         this.tahun.push(item.tahun);
       })
+      console.log(this.jumTh);
+      console.log(this.tahun);
+      
       
       this.ChartBar();
     })
