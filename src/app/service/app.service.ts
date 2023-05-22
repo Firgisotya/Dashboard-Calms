@@ -8,7 +8,8 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'http://localhost:5000'
+  // private baseUrl = 'http://localhost:5000'
+  private baseUrl = 'http://192.168.144.45:5000'
 
   getInex() {
     return this.http.get(this.baseUrl + '/jenis');
@@ -42,5 +43,25 @@ export class AppService {
   count_conduct() {
     return this.http.get(this.baseUrl + '/count_conduct');
   }
-
+  count_dimensi(){
+    return this.http.get(this.baseUrl + '/count_dimensi');
+  }
+  count_refracto(){
+    return this.http.get(this.baseUrl + '/count_refracto');
+  }
+  count_enclosure(){
+    return this.http.get(this.baseUrl + '/count_enclosure');
+  }
+  count_thermo(){
+    return this.http.get(this.baseUrl + '/count_thermohygro');
+  }
+  trans_by_status(){
+    return this.http.get(this.baseUrl + '/trans_by_status');
+  }
+  trans_by_category(){
+    return this.http.get(this.baseUrl + '/trans_by_category');
+  }
+  table_pending(){
+    return this.http.get(this.baseUrl + '/table_pending');
+  }
 }

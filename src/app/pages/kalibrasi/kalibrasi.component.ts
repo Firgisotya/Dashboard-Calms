@@ -75,6 +75,14 @@ export class KalibrasiComponent {
   tahun_filter: any = [];
   year: any = [];
 
+  getTransStatus: any = [];
+  getStatus: any = [];
+  jumStatus: any = [];
+
+  getTransCategory: any = [];
+  getCategory: any = [];
+  jumCategory: any = [];
+
   filterYear! : FormGroup;
 
   ngOnInit() {
@@ -126,9 +134,25 @@ export class KalibrasiComponent {
       year: new FormControl('')
     })
 
+    this.appService.trans_by_status().subscribe((data: any) => {
+      this.getTransStatus = data.data[0];
+      
+      this.getTransStatus.forEach((item: any) => {
+        this.getStatus.push(item.status);
+        this.jumStatus.push(item.total);
+      })
+      this.ChartStatus();
+    })
     
-    
-   
+    this.appService.trans_by_category().subscribe((data: any) => {
+      this.getTransCategory = data.data[0];
+      
+      this.getTransCategory.forEach((item: any) => {
+        this.getCategory.push(item.category);
+        this.jumCategory.push(item.category_count);
+      })
+      this.ChartCategory();
+    })
     
   }
 
@@ -170,7 +194,7 @@ export class KalibrasiComponent {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            position: 'top',
+            position: 'bottom',
           },  
         }
       }
@@ -182,7 +206,7 @@ export class KalibrasiComponent {
     this.chartColumn = {
       series: [
         {
-          name: "distibuted",
+          name: "Total",
           data: this.jumMt
         }
       ],
@@ -243,7 +267,7 @@ export class KalibrasiComponent {
     this.chartBar = {
       series: [
         {
-          name: "basic",
+          name: "Total",
           data: this.jumTh
         }
       ],
@@ -263,6 +287,76 @@ export class KalibrasiComponent {
         categories: this.tahun
       }
     };
+  }
+
+  ChartStatus() {
+    this.chartPie = new Chart('transStatus', {
+      type: 'doughnut',
+      data: {
+        labels: this.getStatus,
+        datasets: [{
+          data: this.jumStatus,
+          backgroundColor: [
+            'rgb(0, 227, 150)',
+            'rgb(255, 69, 96)',
+            'rgb(254, 176, 25)',
+            'rgb(149, 165, 166)',
+
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },  
+        }
+      }
+      }
+    )
+  }
+
+  ChartCategory() {
+    this.chartPie = new Chart('transCategory', {
+      type: 'doughnut',
+      data: {
+        labels: this.getCategory,
+        datasets: [{
+          data: this.jumCategory,
+          backgroundColor: [
+            'rgb(0, 227, 150)',
+            'rgb(255, 69, 96)',
+            'rgb(254, 176, 25)',
+            '	RGB(6, 56, 82)',
+            '	RGB(152, 71, 86)',
+            'RGB(196, 188, 140)',
+            '	RGB(75, 44, 68)',
+            '	RGB(12, 164, 132)',
+            'RGB(86, 164, 172)',
+            'RGB(255, 112, 67)',
+            'RGB(179, 64, 64)',
+            'RGB(122, 172, 88)',
+            '	RGB(184, 200, 204)'
+
+
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },  
+        }
+      }
+      }
+    )
   }
 
 }

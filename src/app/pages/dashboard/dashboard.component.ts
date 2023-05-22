@@ -69,6 +69,10 @@ export class DashboardComponent {
   countMass: any = [];
   countPh: any = [];
   countConduct: any = [];
+  countDimensi: any = [];
+  countRefracto: any = [];
+  countEnclosure: any = [];
+  countThermo: any = [];
  
 
   dtRemainding: any = [];
@@ -96,6 +100,22 @@ export class DashboardComponent {
 
     this.appService.count_conduct().subscribe((data: any) => {
       this.countConduct = data.data[0].length
+    })
+
+    this.appService.count_dimensi().subscribe((data: any) => {
+      this.countDimensi = data.data[0].length
+    })
+
+    this.appService.count_refracto().subscribe((data: any) => {
+      this.countRefracto = data.data[0].length
+    })
+
+    this.appService.count_enclosure().subscribe((data: any) => {
+      this.countEnclosure = data.data[0].length
+    })
+
+    this.appService.count_thermo().subscribe((data: any) => {
+      this.countThermo = data.data[0].length
     })
 
 

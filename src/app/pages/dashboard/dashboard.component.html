@@ -17,7 +17,13 @@
           <p>
             Tersisa <b>{{ item.sisa_hari }} Hari</b> Dari Sekarang
           </p>
-          <div class="justify-center py-3">
+          <div class="justify-center py-3 space-x-2">
+            <a
+              href=""
+              target="_blank"
+              class="bg-yellow-300 text-white font-bold py-1 px-4 rounded"
+              >Detail</a
+            >
             <a
               href=""
               target="_blank"
@@ -44,7 +50,13 @@
           <p>
             Sudah Lebih <b>{{ item.lebih_hari }} Hari</b> Dari Tanggal Kadaluarsa
           </p>
-          <div class="justify-center py-3">
+          <div class="justify-center py-3 space-x-2">
+            <a
+              href=""
+              target="_blank"
+              class="bg-yellow-300 text-white font-bold py-1 px-4 rounded"
+              >Detail</a
+            >
             <a
               href=""
               target="_blank"
@@ -184,7 +196,7 @@
               Total Dimensi
             </p>
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-              0
+              {{ countDimensi }}
             </p>
           </div>
         </div>
@@ -205,7 +217,7 @@
               Total Refacto
             </p>
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-              0
+              {{ countRefracto }}
             </p>
           </div>
         </div>
@@ -226,7 +238,7 @@
               Total Enclosure
             </p>
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-              0
+              {{ countEnclosure }}
             </p>
           </div>
         </div>
@@ -252,7 +264,7 @@
               Total Termohygro
             </p>
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-              0
+              {{ countThermo }}
             </p>
           </div>
         </div>
