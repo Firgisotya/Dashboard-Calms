@@ -57,6 +57,25 @@ export class KalibrasiComponent {
       for (let i = 2020; i <= currentYear; i++) {
         this.tahun_filter.push(i);
       }
+
+      const currentMonth = new Date().getMonth();
+      const monthNames = [
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember"
+      ];
+      for (let i = 0; i <= currentMonth; i++) {
+        this.month_filter.push(monthNames[i]);
+      }
   }
 
   getInex: any = [];
@@ -83,7 +102,17 @@ export class KalibrasiComponent {
   getCategory: any = [];
   jumCategory: any = [];
 
+  getTransType: any = [];
+  getType: any = [];
+  getMonth: any = [];
+  jumType: any = [];
+  selectedMonth: any = [];
+  monthnm: any = [];
+  month_filter: any = [];
+
+
   filterYear! : FormGroup;
+  filterMonth! : FormGroup;
 
   ngOnInit() {
 
@@ -100,6 +129,8 @@ export class KalibrasiComponent {
             return 'Internal';
           case 2:
             return 'External';
+          case 3:
+            return 'Verification  ';
           default:
             return '';    
         }
@@ -114,8 +145,6 @@ export class KalibrasiComponent {
         this.jumTh.push(item.total_data);
         this.tahun.push(item.tahun);
       })
-      console.log(this.jumTh);
-      console.log(this.tahun);
       
       
       this.ChartBar();
@@ -153,6 +182,19 @@ export class KalibrasiComponent {
       })
       this.ChartCategory();
     })
+
+    this.appService.filter_trans_month(this.selectedMonth).subscribe((data: any) => {
+      this.getTransType = data.data[0];
+      
+      this.getTransType.forEach((item: any) => {
+        this.getType.push(item.category);
+        this.jumType.push(item.total_data);
+      })
+    });
+
+    this.filterMonth = new FormGroup({
+      month: new FormControl('')
+    })
     
   }
 
@@ -175,6 +217,24 @@ export class KalibrasiComponent {
 
   }
 
+  filterByMonth() {
+    console.log(this.filterMonth.value);
+
+    this.getType = [];
+    this.jumType = [];
+    this.appService.filter_trans_month(this.filterMonth.value).subscribe((data: any) => {
+      this.getTransType = data.data[0];
+
+      this.getTransType.forEach((item: any) => {
+        this.getType.push(item.category);
+        this.jumType.push(item.total_data);
+        
+        
+      })
+      this.ChartColumn();
+    })
+  }
+
   ChartPie() {
     this.chartPie = new Chart('pieChart', {
       type: 'doughnut',
@@ -184,7 +244,8 @@ export class KalibrasiComponent {
           data: this.jumInex,
           backgroundColor: [
             'rgb(40, 255, 191)',
-            'rgb(247, 230, 173)'
+            'rgb(247, 230, 173)',
+            'rgb(255, 99, 132)',
           ],
           borderWidth: 2
         }]
@@ -208,6 +269,12 @@ export class KalibrasiComponent {
         {
           name: "Total",
           data: this.jumMt
+        }
+      ],
+      seriesType: [
+        {
+          name: "Total",
+          data: this.jumType
         }
       ],
       chart: {
@@ -244,6 +311,24 @@ export class KalibrasiComponent {
       },
       xaxis: {
         categories: this.bulan,
+        labels: {
+          style: {
+            colors: [
+              "#008FFB",
+              "#00E396",
+              "#FEB019",
+              "#FF4560",
+              "#775DD0",
+              "#546E7A",
+              "#26a69a",
+              "#D10CE8"
+            ],
+            fontSize: "12px"
+          }
+        }
+      },
+      xaxisType: {
+        categories: this.getType,
         labels: {
           style: {
             colors: [

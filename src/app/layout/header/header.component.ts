@@ -11,6 +11,7 @@ export class HeaderComponent {
 
   constructor(private appService: AppService) {}
 
+
   dtRemainding: any = [];
   remaningDay: any;
 

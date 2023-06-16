@@ -64,4 +64,9 @@ export class AppService {
   table_pending(){
     return this.http.get(this.baseUrl + '/table_pending');
   }
+  filter_trans_month(month: any){
+    console.log("from service");
+    console.log(month);
+    return this.http.post(this.baseUrl + '/filter_trans_month', month);
+  }
 }

@@ -6,12 +6,10 @@
         </div>
     </header> -->
 
-    <div class="navbar bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
-        <div class="flex-1">
-            <p class="font-medium">{{ currentDateTime | date:'EEEE, MMMM d, y, HH:mm:ss' }}</p>
-        </div>
-        
-      </div>
-
-
-     
+<div class="navbar bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
+  <div class="flex-1">
+    <p class="font-medium">
+      {{ currentDateTime | date : "EEEE, MMMM d, y, HH:mm:ss" }}
+    </p>
+  </div>
+</div>
