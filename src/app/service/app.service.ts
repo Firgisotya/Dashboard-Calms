@@ -69,4 +69,19 @@ export class AppService {
     console.log(month);
     return this.http.post(this.baseUrl + '/filter_trans_month', month);
   }
+
+  //report
+  count_in_or_ex_weekly(){
+    return this.http.get(this.baseUrl + '/count_jenis_weekly');
+  }
+  count_reg_weekly(){
+    return this.http.get(this.baseUrl + '/count_reg_weekly');
+  }
+  count_in_or_ex_monthly(){
+    return this.http.get(this.baseUrl + '/count_jenis_monthly');
+  }
+  count_reg_monthly(){
+    return this.http.get(this.baseUrl + '/count_reg_monthly');
+  }
+
 }

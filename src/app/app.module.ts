@@ -16,6 +16,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { KalibrasiComponent } from './pages/kalibrasi/kalibrasi.component';
 import { PendingComponent } from './pages/pending/pending.component';
+import { ReportComponent } from './pages/report/report.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PendingComponent } from './pages/pending/pending.component';
     FooterComponent,
     DashboardComponent,
     KalibrasiComponent,
-    PendingComponent
+    PendingComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

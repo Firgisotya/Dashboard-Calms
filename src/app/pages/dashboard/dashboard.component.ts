@@ -3,51 +3,7 @@ import { AppService } from 'src/app/service/app.service';
 import { ChartComponent } from "ng-apexcharts";
 import { FormGroup, FormControl } from '@angular/forms';
 
-import {
-  ApexNonAxisChartSeries,
-  ApexResponsive,
-  ApexChart,
-  ApexFill,
-  ApexDataLabels,
-  ApexLegend,
-  ApexPlotOptions,
-  ApexYAxis,
-  ApexTitleSubtitle,
-  ApexXAxis,
-  ApexAxisChartSeries,
-  ApexGrid,
-} from "ng-apexcharts";
 
-export type ChartPie = {
-  series: ApexNonAxisChartSeries;
-  chart: ApexChart;
-  responsive: ApexResponsive[];
-  labels: any;
-  fill: ApexFill;
-  legend: ApexLegend;
-  dataLabels: ApexDataLabels;
-};
-
-export type ChartColumn = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
-  xaxis: ApexXAxis;
-  fill: ApexFill;
-  title: ApexTitleSubtitle;
-  colors: string[];
-  grid: ApexGrid;
-};
-
-export type ChartBar = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  xaxis: ApexXAxis;
-};
 
 @Component({
   selector: 'app-dashboard',
@@ -56,9 +12,6 @@ export type ChartBar = {
 })
 export class DashboardComponent {
 
-  public chartPie!: Partial<ChartPie> | any;
-  public chartColumn!: Partial<ChartColumn> | any;
-  public chartBar!: Partial<ChartBar> | any;
 
   constructor(private appService: AppService) {
     
