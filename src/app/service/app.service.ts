@@ -8,8 +8,8 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  // private baseUrl = 'http://localhost:5000'
-  private baseUrl = 'http://192.168.144.45:5000'
+  // private baseUrl = 'http://localhost:3514'
+  private baseUrl = 'http://192.168.9.47:3514'
 
   getInex() {
     return this.http.get(this.baseUrl + '/jenis');
@@ -82,6 +82,19 @@ export class AppService {
   }
   count_reg_monthly(){
     return this.http.get(this.baseUrl + '/count_reg_monthly');
+  }
+  count_in_or_ex_yearly(){
+    return this.http.get(this.baseUrl + '/count_jenis_yearly');
+  }
+  count_reg_yearly(){
+    return this.http.get(this.baseUrl + '/count_reg_yearly');
+  }
+  graf_monthly(){
+    return this.http.get(this.baseUrl + '/report_month');
+  }
+  
+  graf_yearly(){
+    return this.http.get(this.baseUrl + '/report_year');
   }
 
 }

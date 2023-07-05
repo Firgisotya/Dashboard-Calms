@@ -17,15 +17,15 @@ export class DashboardComponent {
     
   }
 
-  countTemp: any = [];
-  countPress: any = [];
-  countMass: any = [];
-  countPh: any = [];
-  countConduct: any = [];
-  countDimensi: any = [];
-  countRefracto: any = [];
-  countEnclosure: any = [];
-  countThermo: any = [];
+  countTemp = 0;
+  countPress = 0;
+  countMass = 0;
+  countPh = 0;
+  countConduct = 0;
+  countDimensi = 0;
+  countRefracto = 0;
+  countEnclosure = 0;
+  countThermo = 0;
  
 
   dtRemainding: any = [];

@@ -2,107 +2,115 @@
         <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="border rounded-lg shadow overflow-hidden dark:border-gray-700 dark:shadow-gray-900">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead class="bg-gray-50 dark:bg-gray-700">
-                <tr class="text-center">
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Transaksi</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Internal or External</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">No Dokumen</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Equipment Name</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Category</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Brand</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Serial Number</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Departement</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Area</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Area Detail</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Tanggal Kalibrasi</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Exp Calibration</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Tanggal Release Sertifikat</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Requestor</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">PIC</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Model</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Kondisi Alat</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Acceptance Kriteria</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Status</th>
-                    <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Action</th>
-                </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                <tr *ngFor="let item of dataPending | paginate: { itemsPerPage: 5, currentPage: p }" class="text-center">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                        <div *ngIf="item.reg_or_recal == 1">
-                            Registrasi
-                        </div>
-                        <div *ngIf="item.reg_or_recal == 2">
-                            Recalibrasi
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                        <div>
-                            <div *ngIf="item.in_or_ex == 1">
-                                Internal
+            <div *ngIf="dataPending != 0">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                    <tr class="text-center">
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Transaksi</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Internal or External</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">No Dokumen</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Equipment Name</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Category</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Brand</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Serial Number</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Departement</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Area</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Area Detail</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Tanggal Kalibrasi</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Exp Calibration</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Tanggal Release Sertifikat</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Requestor</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">PIC</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Model</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Kondisi Alat</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Acceptance Kriteria</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Status</th>
+                        <th scope="col" class="px-6 py-3  text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tr *ngFor="let item of dataPending | paginate: { itemsPerPage: 5, currentPage: p }" class="text-center">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <div *ngIf="item.reg_or_recal == 1">
+                                Registrasi
                             </div>
-                            <div *ngIf="item.in_or_ex == 2">
-                                External
+                            <div *ngIf="item.reg_or_recal == 2">
+                                Recalibrasi
                             </div>
-                            <div *ngIf="item.in_or_ex == 3">
-                                Verification
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <div>
+                                <div *ngIf="item.in_or_ex == 1">
+                                    Internal
+                                </div>
+                                <div *ngIf="item.in_or_ex == 2">
+                                    External
+                                </div>
+                                <div *ngIf="item.in_or_ex == 3">
+                                    Verification
+                                </div>
                             </div>
-                        </div>
-                    </td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.no_dok }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.equipment_name }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.category }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.brand }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.serial_number }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                        {{ item.departement }}
-                        <div *ngIf="item.departement == null; else departement">
-                            NULL
-                        </div>
-                        <ng-template #departement>{{ item.departement }}</ng-template>
+                        </td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.no_dok }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.equipment_name }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.category }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.brand }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.serial_number }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            {{ item.departement }}
+                            <div *ngIf="item.departement == null; else departement">
+                                NULL
+                            </div>
+                            <ng-template #departement>{{ item.departement }}</ng-template>
+                            
+                        </td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.area }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.location_detail }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.tanggal_calibration }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.exp_calibration }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.tanggal_release_certificate }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.requestor }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.pic_input }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.model }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.kondisi_alat }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.acceptance_kriteria }}</td> 
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                            <div>
+                                <div *ngIf="item.isactive == 1">
+                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                                        <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
+                                        </span>
+                                        <span class="relative">
+                                            active
+                                        </span>
+                                    </span>
+                                </div>
+                                <div *ngIf="item.isactive == 0">
+                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                                        <span aria-hidden="true" class="absolute inset-0 bg-red-200 rounded-full opacity-50">
+                                        </span>
+                                        <span class="relative">
+                                            Inactive
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </td>      
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <a class="text-blue-500 hover:text-blue-700" href="#">Detail</a>
+                        </td>
                         
-                    </td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.area }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.location_detail }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.tanggal_calibration }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.exp_calibration }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.tanggal_release_certificate }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.requestor }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.pic_input }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.model }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.kondisi_alat }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.acceptance_kriteria }}</td> 
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                        <div>
-                            <div *ngIf="item.isactive == 1">
-                                <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                    <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                    </span>
-                                    <span class="relative">
-                                        active
-                                    </span>
-                                </span>
-                            </div>
-                            <div *ngIf="item.isactive == 0">
-                                <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                    <span aria-hidden="true" class="absolute inset-0 bg-red-200 rounded-full opacity-50">
-                                    </span>
-                                    <span class="relative">
-                                        Inactive
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </td>      
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a class="text-blue-500 hover:text-blue-700" href="#">Detail</a>
-                    </td>
+                    </tr>      
+                    </tbody>
                     
-                </tr>      
-                </tbody>
-                
-            </table>
+                </table>
+            </div>
+            <div *ngIf="dataPending == 0">
+                <div class="flex justify-center">
+                    <div class="items-center">
+                        <p class="text-gray-500 text-2xl dark:text-gray-300">Tidak Ada Data Pending Task</p>
+                    </div>
+            </div>
             <div class="flex justify-center">
                 <div class="items-center">
                   <pagination-controls (pageChange)="p = $event"
