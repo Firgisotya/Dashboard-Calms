@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalibrasi</title>
+
+</head>
+<body class="">
+    <div class="max-w-full h-screen mx-auto bg-white shadow-md p-8">
+        <div class="border-2 border-black ">
+            <div class="flex justify-between border border-b-2 border-t-0 border-l-0 border-r-0  border-black p-3">
+                <img src="../../../assets/aio-logo.png" width="100px" height="100px" alt="Workflow">
+                <p class="text-lg font-bold">Tanggal Kadaluarsa: 21 Juli 2023</p>
+            </div>
+            <div class="flex">
+                <div class="w-1/2 flex justify-center py-8 px-3  border-b-2 border-t-0 border-l-0 border-r-2  border-black">
+                    <qrcode [qrdata]="link" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                </div>
+
+                <div class="w-1/2 py-8 px-3  border-b-2 border-t-0 border-l-0 border-r-0  border-black">
+                    <p class="text-lg"><span class="font-bold">Nomor Dokumen:</span> {{ data.no_dok }}</p>
+                    <p class="text-lg"><span class="font-bold">Equipment Name:</span> {{ data.equipment_name }}</p>
+                    <p class="text-lg"><span class="font-bold">Serial Number:</span> {{ data.serial_number }}</p>
+                    <p class="text-lg"><span class="font-bold">Brand:</span> {{ data.brand }}</p>
+                    <p class="text-lg"><span class="font-bold">Model:</span> {{ data.model }}</p>
+                    <p class="text-lg"><span class="font-bold">Tanggal Kalibrasi:</span> {{ data.tanggal_calibration }}</p>
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        // Uncomment the line below if you want to automatically print the receipt after loading the page.
+        // window.print();
+    </script>
+</body>
+</html>

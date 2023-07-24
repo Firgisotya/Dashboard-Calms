@@ -1,12 +1,13 @@
 
 <main class="relative h-screen overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-2xl">
-  <div class="flex items-start justify-between">
+  <div [ngClass]="router.url.includes('/print')? 'w-full h-screen' : 'flex items-start justify-between'" class="">
       <!-- Sidebar -->
-      <app-sidebar></app-sidebar>
-      <!-- End Sidebar -->
-      <div class="flex flex-col w-10/12 pl-0 md:p-4 md:space-y-4">
 
-        <app-header></app-header>
+      <app-sidebar *ngIf="!router.url.includes('/print') "></app-sidebar>
+      <!-- End Sidebar -->
+      <div [ngClass]="router.url.includes('/print')? 'w-full h-screen' : 'flex flex-col w-10/12 pl-0 md:p-4 md:space-y-4'" class="">
+
+        <app-header *ngIf="!router.url.includes('/print')"></app-header>
 
         <!-- Content -->
         <router-outlet></router-outlet>

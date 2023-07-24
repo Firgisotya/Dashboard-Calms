@@ -8,8 +8,8 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
-  // private baseUrl = 'http://localhost:3514'
-  private baseUrl = 'http://192.168.9.47:3514'
+  private baseUrl = 'http://localhost:3514'
+  // private baseUrl = 'http://192.168.9.47:3514'
 
   getInex() {
     return this.http.get(this.baseUrl + '/jenis');
@@ -95,6 +95,14 @@ export class AppService {
   
   graf_yearly(){
     return this.http.get(this.baseUrl + '/report_year');
+  }
+
+  getTrans(){
+    return this.http.get(this.baseUrl + '/getTrans');
+  }
+
+  cetak(id: any){
+    return this.http.get(this.baseUrl + '/cetak/'+ id);
   }
 
 }

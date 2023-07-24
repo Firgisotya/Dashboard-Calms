@@ -57,7 +57,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.brand }}</td> 
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{ item.serial_number }}</td> 
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                            {{ item.departement }}
+                         
                             <div *ngIf="item.departement == null; else departement">
                                 NULL
                             </div>
