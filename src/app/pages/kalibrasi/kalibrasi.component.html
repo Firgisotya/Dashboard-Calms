@@ -35,13 +35,13 @@
           </form>
 
           <apx-chart
-            [series]="chartColumn.series"
-            [chart]="chartColumn.chart"
-            [legend]="chartColumn.legend"
-            [dataLabels]="chartColumn.dataLabels"
-            [colors]="chartColumn.colors"
-            [plotOptions]="chartColumn.plotOptions"
-            [xaxis]="chartColumn.xaxis"
+            [series]="chartColumn?.series"
+            [chart]="chartColumn?.chart"
+            [legend]="chartColumn?.legend"
+            [dataLabels]="chartColumn?.dataLabels"
+            [colors]="chartColumn?.colors"
+            [plotOptions]="chartColumn?.plotOptions"
+            [xaxis]="chartColumn?.xaxis"
           ></apx-chart>
         </div>
       </div>
@@ -54,11 +54,11 @@
         >
           <h1 class="text-center font-bold font">Year</h1>
           <apx-chart
-            [series]="chartBar.series"
-            [chart]="chartBar.chart"
-            [dataLabels]="chartBar.dataLabels"
-            [plotOptions]="chartBar.plotOptions"
-            [xaxis]="chartBar.xaxis"
+            [series]="chartBar?.series"
+            [chart]="chartBar?.chart"
+            [dataLabels]="chartBar?.dataLabels"
+            [plotOptions]="chartBar?.plotOptions"
+            [xaxis]="chartBar?.xaxis"
           ></apx-chart>
         </div>
       </div>
@@ -109,17 +109,17 @@
                 </option>
               </select>
             </form>
-  
+
             <apx-chart
-              [series]="chartColumn.seriesType"
-              [chart]="chartColumn.chart"
-              [legend]="chartColumn.legend"
-              [dataLabels]="chartColumn.dataLabels"
-              [colors]="chartColumn.colors"
-              [plotOptions]="chartColumn.plotOptions"
-              [xaxis]="chartColumn.xaxisType"
+              [series]="chartColumn?.seriesType"
+              [chart]="chartColumn?.chart"
+              [legend]="chartColumn?.legend"
+              [dataLabels]="chartColumn?.dataLabels"
+              [colors]="chartColumn?.colors"
+              [plotOptions]="chartColumn?.plotOptions"
+              [xaxis]="chartColumn?.xaxisType"
             ></apx-chart>
-       
+
         </div>
       </div>
     </div>
@@ -139,11 +139,11 @@
           class="w-full h-full py-4 bg-white shadow-lg rounded-2xl dark:bg-gray-700"
         >
           <h1 class="text-center font-bold font">Coming Soon</h1>
-       
+
         </div>
       </div>
     </div>
 
- 
+
   </div>
 </div>

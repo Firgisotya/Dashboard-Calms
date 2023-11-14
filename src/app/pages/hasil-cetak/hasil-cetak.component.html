@@ -12,7 +12,7 @@
         <div class="border-2 border-black ">
             <div class="flex justify-between border border-b-2 border-t-0 border-l-0 border-r-0  border-black p-3">
                 <img src="../../../assets/aio-logo.png" width="100px" height="100px" alt="Workflow">
-                <p class="text-lg font-bold">Tanggal Kadaluarsa: 21 Juli 2023</p>
+                <p class="text-lg font-bold">Tanggal Kadaluarsa: {{ data.exp_calibration }}</p>
             </div>
             <div class="flex">
                 <div class="w-1/2 flex justify-center py-8 px-3  border-b-2 border-t-0 border-l-0 border-r-2  border-black">
@@ -27,10 +27,10 @@
                     <p class="text-lg"><span class="font-bold">Model:</span> {{ data.model }}</p>
                     <p class="text-lg"><span class="font-bold">Tanggal Kalibrasi:</span> {{ data.tanggal_calibration }}</p>
                 </div>
-               
+
             </div>
         </div>
-        
+
     </div>
     <script>
         // Uncomment the line below if you want to automatically print the receipt after loading the page.

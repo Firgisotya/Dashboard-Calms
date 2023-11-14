@@ -132,21 +132,22 @@ export class KalibrasiComponent {
           case 3:
             return 'Verification  ';
           default:
-            return '';    
+            return '';
         }
       })
       this.ChartPie();
-      
+
     });
     this.ChartBar();
     this.appService.getTh().subscribe((data: any) => {
       this.getTh = data.data[0];
+      console.log(this.getTh);
       this.getTh.forEach((item: any) => {
         this.jumTh.push(item.total_data);
         this.tahun.push(item.tahun);
       })
-      
-      
+
+
       this.ChartBar();
     })
 
@@ -157,7 +158,7 @@ export class KalibrasiComponent {
         this.bulan.push(item.bulan);
       })
       this.ChartColumn();
-      
+
     })
     this.filterYear = new FormGroup({
       year: new FormControl('')
@@ -165,17 +166,17 @@ export class KalibrasiComponent {
 
     this.appService.trans_by_status().subscribe((data: any) => {
       this.getTransStatus = data.data[0];
-      
+
       this.getTransStatus.forEach((item: any) => {
         this.getStatus.push(item.status);
         this.jumStatus.push(item.total);
       })
       this.ChartStatus();
     })
-    
+
     this.appService.trans_by_category().subscribe((data: any) => {
       this.getTransCategory = data.data[0];
-      
+
       this.getTransCategory.forEach((item: any) => {
         this.getCategory.push(item.category);
         this.jumCategory.push(item.category_count);
@@ -185,7 +186,7 @@ export class KalibrasiComponent {
 
     this.appService.filter_trans_month(this.selectedMonth).subscribe((data: any) => {
       this.getTransType = data.data[0];
-      
+
       this.getTransType.forEach((item: any) => {
         this.getType.push(item.category);
         this.jumType.push(item.total_data);
@@ -195,12 +196,12 @@ export class KalibrasiComponent {
     this.filterMonth = new FormGroup({
       month: new FormControl('')
     })
-    
+
   }
 
   filterByYear() {
     console.log(this.filterYear.value);
-    
+
     this.bulan = [];
     this.jumMt = [];
     this.appService.getMonth(this.filterYear.value).subscribe((data: any) => {
@@ -228,8 +229,8 @@ export class KalibrasiComponent {
       this.getTransType.forEach((item: any) => {
         this.getType.push(item.category);
         this.jumType.push(item.total_data);
-        
-        
+
+
       })
       this.ChartColumn();
     })
@@ -256,7 +257,7 @@ export class KalibrasiComponent {
         plugins: {
           legend: {
             position: 'bottom',
-          },  
+          },
         }
       }
       }
@@ -281,7 +282,7 @@ export class KalibrasiComponent {
         height: 350,
         type: "bar",
         events: {
-         
+
         }
       },
       colors: [
@@ -397,7 +398,7 @@ export class KalibrasiComponent {
         plugins: {
           legend: {
             position: 'bottom',
-          },  
+          },
         }
       }
       }
@@ -437,7 +438,7 @@ export class KalibrasiComponent {
         plugins: {
           legend: {
             position: 'bottom',
-          },  
+          },
         }
       }
       }
